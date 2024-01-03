@@ -25,8 +25,9 @@ module.exports = {
       'LabeledStatement',
       'WithStatement',
     ],
+    'import/extensions': ['error', 'ignorePackages', { 'js': 'never' }],
   },
-  overrides:[
+  overrides: [
     {
       files: ['*.js'],
       excludedFiles: 'babel.config.js',
