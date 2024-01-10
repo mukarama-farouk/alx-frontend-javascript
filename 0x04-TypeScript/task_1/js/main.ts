@@ -1,4 +1,4 @@
-interface Teacher {
+export interface Teacher {
     readonly firstName: string;
     readonly lastName: string;
     fullTimeEmployee: boolean;
@@ -7,12 +7,47 @@ interface Teacher {
     [key: string]: any; 
 }
 
-const teacher3: Teacher = {
-    firstName: 'John',
-    fullTimeEmployee: false,
-    lastName: 'Doe',
-    location: 'London',
-    contract: false,
-};
+export interface Directors extends Teacher {
+    numberOfReports: number;
+}
 
-console.log(teacher3)
+export function printTeacher(firstName:string, lastName:string): string {
+    return `${firstName[0]}. ${lastName}`;
+
+}
+
+export interface printTeacherFunction{
+    (firstName: string, lastName: string): string;
+}
+
+console.log(printTeacher('John', 'Doe'));
+console.log(printTeacher('Mukarama', 'Farouk'));
+console.log(printTeacher('Smith', 'Wood'));
+
+export interface StudentClassConstructor {
+    new (firstName: string, lastName: string): StudentClass;
+}
+
+export interface StudentClass{
+    workOnHomework(): string;
+    displayName(): string;
+}
+
+const StudentClass: StudentClassConstructor = class StudentClassImplement implements StudentClass {
+    private firstName: string;
+    private lastName: string;
+
+    constructor(firstName: string, lastName: string) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    workOnHomework(): string {
+        return 'Currently working';
+    }
+    
+      displayName(): string {
+        return this.firstName;
+    }
+
+}
